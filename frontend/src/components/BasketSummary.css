@@ -1,0 +1,245 @@
+.basket-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  animation: slideInRight 0.6s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.basket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid #667eea;
+}
+
+.basket-header h2 {
+  font-size: 1.75rem;
+  color:  hwb(186 2% 25%);
+  font-weight: 800;
+  margin: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #a0aec0;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.empty-hint {
+  font-size: 0.9rem !important;
+  color: #cbd5e0;
+}
+
+.basket-items-list {
+  max-height: 380px;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+}
+
+.basket-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  background: #f7fafc;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  animation: slideInLeft 0.4s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.basket-item:hover {
+  background: #f0f4ff;
+  border-color: #667eea;
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.1);
+}
+
+.qty-decrease,
+.qty-remove {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 700;
+  color: #667eea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-decrease:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.qty-remove:hover {
+  background: #ff6b6b;
+  color: white;
+  border-color: #ff6b6b;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.qty-display {
+  min-width: 40px;
+  text-align: center;
+  font-weight: 800;
+  color: #1a202c;
+  font-size: 1.1rem;
+}
+
+.summary-box {
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f0f7 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid #e8eef7;
+  margin: 1.5rem 0;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.discount-row {
+  background: rgba(34, 134, 58, 0.08);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+  color: #e70c22;
+}
+
+.discount-value {
+  color: #e20f0f;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.summary-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #cbd5e0, transparent);
+  margin: 1rem 0;
+}
+
+.btn-clear {
+  width: 100%;
+  padding: 1.1rem;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-clear:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 107, 107, 0.4);
+}
+
+.btn-clear:active {
+  transform: translateY(-1px);
+}
+
+.basket-items-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.basket-items-list::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.basket-items-list::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 3px;
+}
+
+.basket-items-list::-webkit-scrollbar-thumb:hover {
+  background: #764ba2;
+}
+
+@media (max-width: 768px) {
+  .basket-section {
+    padding: 1.5rem;
+  }
+
+  .basket-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .basket-items-list {
+    max-height: 300px;
+  }
+}
