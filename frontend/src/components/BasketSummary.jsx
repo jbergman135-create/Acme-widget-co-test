@@ -1,11 +1,16 @@
-function BasketSummary({ items, products,onRemove, onDecrease, onClear }) {
+function BasketSummary({ items, products, summary, onRemove, onDecrease, onClear }) {
   const getProductName = (code) => {
     const product = products.find(p => p.code === code);
     return product ? product.name : code;
   };
-  
+
   return (
     <section className="basket-section">
+      <div className="basket-header">
+        <h2> Your Basket</h2>
+        <span className="item-count">{items.length} items</span>
+      </div>
+
       {items.length === 0 ? (
         <div className="empty-state">
           <div className="empty-icon">🛒</div>
@@ -41,29 +46,35 @@ function BasketSummary({ items, products,onRemove, onDecrease, onClear }) {
               </div>
             ))}
           </div>
-            {summary && (
+
+          {summary && (
             <div className="summary-box">
               <div className="summary-row">
                 <span>Subtotal</span>
+                <span className="summary-value">${summary.subtotal.toFixed(2)}</span>
               </div>
 
               {summary.discount > 0 && (
                 <div className="summary-row discount-row">
                   <span>Offer Discount</span>
+                  <span className="discount-value">−${summary.discount.toFixed(2)}</span>
                 </div>
               )}
 
               <div className="summary-row">
                 <span>Delivery</span>
+                <span className="summary-value">${summary.delivery.toFixed(2)}</span>
               </div>
 
               <div className="summary-divider"></div>
 
               <div className="summary-row total-row">
                 <span>Total</span>
+                <span className="total-value">${summary.total.toFixed(2)}</span>
               </div>
             </div>
           )}
+
           <button className="btn-clear" onClick={onClear}>
             <span></span> Clear Basket
           </button>

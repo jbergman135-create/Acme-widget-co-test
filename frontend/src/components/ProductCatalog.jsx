@@ -25,6 +25,7 @@ function ProductCatalog({ products, onAdd }) {
               
               <div className="price-section">
                 <span className="price-label">Price:</span>
+                <span className="price-value">${product.price.toFixed(2)}</span>
               </div>
               
               <button
