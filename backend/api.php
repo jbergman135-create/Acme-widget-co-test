@@ -46,7 +46,31 @@ try {
             'offers' => $offers
         ]);
     } 
-    
+    elseif (strpos($requestPath, '/api/basket/calculate') !== false && $requestMethod === 'POST') {
+        $input = json_decode(file_get_contents('php://input'), true);
+        
+        if (!isset($input['items']) || !is_array($input['items'])) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'error' => 'Invalid request format']);
+            exit;
+        }
+
+        $basket = new Basket($products, $deliveryRules, $offers);
+        
+        // Add items to basket
+        foreach ($input['items'] as $item) {
+            for ($i = 0; $i < $item['quantity']; $i++) {
+                $basket->add($item['code']);
+            }
+        }
+
+        $summary = $basket->total();
+        
+        echo json_encode([
+            'success' => true,
+            'summary' => $summary
+        ]);
+    }
     else {
         http_response_code(404);
         echo json_encode(['success' => false, 'error' => 'Endpoint not found']);
